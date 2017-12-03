@@ -27,10 +27,11 @@ matrix:
 before_script:
   - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d && echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - travis_wait composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - curl -sSf -o ~/.phpenv/versions/hhvm/bin/phpunit https://phar.phpunit.de/phpunit-5.7.phar
 
 script:
   - mkdir -p build/logs build/cov
-  - php bin/phpunit -d error_reporting=16384
+  - php bin/phpunit
 
 after_script:
   - php bin/coveralls -v
