@@ -65,13 +65,13 @@ class Insee implements IsoCodeInterface
         switch (true) {
             //départements corses. Le calcul de la cles est différent
             case $return['departement'] == '2A':
-                $aChecker = floatval(str_replace('A', 0, substr($numero, 0, 13)));
-                $aChecker -= 1000000;
+                $numero = str_replace('2A', '19', $numero);
+                $aChecker = floatval(substr($numero, 0, 13));
                 break;
 
             case $return['departement'] == '2B':
-                $aChecker = floatval(str_replace('B', 1, substr($numero, 0, 13)));
-                $aChecker -= 2000000;
+                $numero = str_replace('2B', '18', $numero);
+                $aChecker = floatval(substr($numero, 0, 13));
                 break;
 
             // département de naissance en outre-mer: de 970 à 989
